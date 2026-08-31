@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- =========================================
+     META TAGS UNTUK WHATSAPP / SOSMED
+     ========================================= -->
+<!-- Judul yang muncul di WA -->
+<title>The Wedding of Shinta & Dhimas</title>
+<meta property="og:title" content="The Wedding of Shinta & Dhimas">
+
+<!-- Deskripsi singkat di bawah judul -->
+<meta property="og:description" content="Minggu, 1 November 2026. Kepada Yth. Bapak/Ibu/Saudara/i, kami mengundang Anda untuk hadir di pernikahan kami.">
+
+<!-- Gambar Thumbnail (Ganti URL ini dengan foto kamu sendiri) -->
+<!-- PENTING: Harus menggunakan HTTPS lengkap, jangan file lokal -->
+<meta property="og:image" content="https://i.ibb.co.com/fGB5YPc2/DSC03239-JPG.jpg">
+
+<!-- Tipe konten -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://github.com/adhimasnandaas">
+
+<!-- Favicon (Ikon kecil di tab browser) -->
+<link rel="icon" type="image/png" href="https://img.icons8.com/color/48/wedding-rings.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --gold:#C1272D;
+  --red-dark:#8B0000;
+  --red-light:#E63946;
+  --bg1:#fef8f7;
+  --bg2:#fce9e6;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(var(--bg1),var(--bg2));
+  color:#333;
+  overflow-x: hidden;
+}
+
+h1,h2{
+  font-family:'Playfair Display',serif;
+  color:var(--gold);
+}
+
+.center{text-align:center}
+
+.hero-title-group{
+  position:relative;
+  top:25px;
+}
+
+.hero-invite-label{
+  position:relative;
+  top:-120px;
+}
+
+.hero-main-content{
+  position:relative;
+  top:110px;
+}
+
+.hero{
+  min-height:105vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  flex-direction: column;
+
+}
+
+.card{
+  background:#fff;
+  margin:20px 16px;
+  padding:30px 20px; /* Padding sedikit diperkecil agar ruang konten lebih lega */
+  border-radius:26px;
+  box-shadow:0 15px 40px rgba(0,0,0,.12);
+  opacity:0;
+  transform:translateY(40px);
+  transition:all .9s ease;
+  max-width: 500px;
+  width: calc(100% - 32px);
+  position: relative;
+}
+
+.card:not(.hero) {
+  padding: 40px 30px;
+  box-shadow: 
+    inset 0 0 0 3px #C1272D,
+    inset 5px 5px 8px -3px rgba(193, 39, 45, 0.3),
+    inset -5px -5px 8px -3px rgba(193, 39, 45, 0.3),
+    0 15px 40px rgba(0,0,0,.12);
+  border: 10px solid #fff;
+}
+
+.hero.card{
+  background:
+    linear-gradient(rgba(35,25,20,0.45), rgba(35,25,20,0.6)),
+    url('https://i.ibb.co.com/fGB5YPc2/DSC03239-JPG.jpg') center center / cover no-repeat;
+  background-color: transparent;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+  color: #fff;
+}
+
+.hero.card h1,
+.hero.card h2,
+.hero.card p,
+.hero.card strong,
+.hero.card .countdown-number,
+.hero.card .countdown-label,
+.hero.card .guest,
+.hero.card #guestName {
+  color: #fff !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.hero.card .countdown-box {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.22);
+  backdrop-filter: blur(2px);
+}
+
+.hero.card .guest {
+  border-top: 1px solid rgba(255,255,255,0.28);
+}
+
+section.card {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.invite-content{
+  display:none;
+  opacity:0;
+  transition:opacity .45s ease;
+}
+
+body.invite-open .invite-content{
+  display:block;
+  opacity:1;
+}
+
+/* --- COUNTDOWN STYLES (FIXED) --- */
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px; /* Jarak antar kotak diperkecil */
+    margin: 25px 0;
+    width: 100%; /* Pastikan container tidak melebihi lebar induk */
+}
+
+.countdown-box {
+    background: var(--bg1);
+    padding: 10px 2px; /* Padding kiri-kanan kecil agar muat */
+    border-radius: 10px;
+    flex: 1; /* Agar lebar otomatis menyesuaikan layar */
+    min-width: 0; /* Mencegah overflow flex item */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.countdown-number {
+    font-size: 18px; /* Font sedikit diperkecil agar aman di HP kecil */
+    font-weight: bold;
+    color: var(--gold);
+    line-height: 1;
+}
+
+.countdown-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    color: #888;
+    margin-top: 4px;
+}
+
+button,.btn{
+  padding:12px 26px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,#C1272D,#E63946);
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  margin-top: 10px;
+  transition: transform 0.2s;
+  box-shadow: 0 5px 15px rgba(193, 39, 45, 0.4);
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.guest{
+  margin-top:20px;
+  font-size:14px;
+  opacity:.9;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  width: 90%; /* Diperlebar sedikit */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.map-preview{
+  display:block;
+  position:relative;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+  margin-top: 15px;
+}
+
+.map-preview img{
+  width:100%;
+  height: 200px;
+  object-fit: cover;
+  display:block;
+}
+
+.map-overlay{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  padding:10px;
+  background:rgba(0,0,0,.6);
+  color:#fff;
+  font-weight:600;
+  text-align:center;
+  font-size: 12px;
+  backdrop-filter: blur(2px);
+}
+
+.photo-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.photo-item{
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+  background: #f5efe8;
+  min-height: 210px;
+}
+
+.photo-item img{
+  width: 100%;
+  height: 100%;
+  min-height: 210px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+
+.photo-item:hover img{
+  transform: scale(1.05);
+}
+
+.amplop{
+  background:#fef8f7;
+  padding:18px;
+  border-radius:18px;
+  margin-top:16px;
+  border: 1px dashed var(--gold);
+  position: relative;
+}
+
+.amplop::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(circle at 30% 30%, #E63946 0%, #C1272D 70%);
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+footer{
+  text-align:center;
+  font-size:13px;
+  margin:40px 0;
+  opacity:.7;
+  padding-bottom: 20px;
+}
+
+/* --- AI FEATURES STYLES --- */
+.wish-form input, .wish-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+}
+.wish-result {
+    margin-top: 15px;
+    padding: 15px;
+    background: #fef8f7;
+    border-left: 3px solid var(--gold);
+    font-style: italic;
+    font-size: 14px;
+    display: none;
+    position: relative;
+}
+.wish-result button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 5px 10px;
+    font-size: 10px;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* --- UCAPAN TAMU STYLES --- */
+.wish-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+    min-height: 80px;
+}
+
+.wishes-list {
+    margin-top: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.wish-item {
+    background: #fef8f7;
+    padding: 15px;
+    border-left: 4px solid var(--gold);
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.wish-item-name {
+    font-weight: 600;
+    color: var(--gold);
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.wish-item-text {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.4;
+    font-style: italic;
+}
+
+.wish-item-date {
+    font-size: 11px;
+    color: #999;
+    margin-top: 8px;
+    text-align: right;
+}
+
+.chat-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#C1272D,#E63946);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    z-index: 1000;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+.chat-btn:hover { transform: scale(1.1); }
+
+.chat-window {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 300px;
+    height: 400px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-header {
+    background: linear-gradient(135deg, #C1272D, #E63946);
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.chat-header h3 { margin: 0; font-size: 16px; font-family: 'Poppins', sans-serif; }
+.close-chat { background: none; border: none; color: white; font-size: 20px; cursor: pointer; padding: 0; margin: 0; }
+
+.chat-body {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.msg {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 13px;
+    line-height: 1.4;
+}
+.msg.bot {
+    background: #f1f1f1;
+    align-self: flex-start;
+    border-top-left-radius: 2px;
+}
+.msg.user {
+    background: #fce9e6;
+    align-self: flex-end;
+    border-top-right-radius: 2px;
+}
+
+.chat-input-area {
+    padding: 10px;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 5px;
+}
+.chat-input-area input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+}
+.chat-input-area button {
+    padding: 0 15px;
+    margin: 0;
+    border-radius: 20px;
+    box-shadow: none;
+}
+
+.typing {
+    display: flex;
+    gap: 4px;
+    padding: 10px;
+    background: #f1f1f1;
+    border-radius: 14px;
+    align-self: flex-start;
+    width: fit-content;
+}
+.dot {
+    width: 6px;
+    height: 6px;
+    background: #aaa;
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out both;
+}
+.dot:nth-child(1) { animation-delay: -0.32s; }
+.dot:nth-child(2) { animation-delay: -0.16s; }
+@keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+
+</style>
+</head>
+
+<body>
+
+<!-- 🎶 MUSIC -->
+<audio id="music" loop>
+  <source src="https://www.image2url.com/r2/default/files/1788153489785-e550db70-4df0-4df8-b4fc-c3e222163f63.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 🌸 OPENING (HERO) -->
+<section class="hero card reveal active">
+  <div style="width: 100%;"> <!-- Pastikan konten full width -->
+    <p class="hero-invite-label" style="font-family: 'Playfair Display', serif;letter-spacing: 2px; text-transform: uppercase; font-size: 16px; color: #888;">The Wedding Of</p>
+    <div class="hero-main-content">
+      <h1 style="font-size: 2.5rem; margin: 10px 0;">Shinta & Dhimas</h1>
+      <p>01 November 2026</p>
+
+      <!-- COUNTDOWN WIDGET -->
+      <div class="countdown-container">
+        <div class="countdown-box">
+            <span class="countdown-number" id="days">00</span>
+            <span class="countdown-label">Hari</span>
+        </div>
+        <div class="countdown-box">
+            <span class="countdown-number" id="hours">00</span>
+            <span class="countdown-label">Jam</span>
+        </div>
+        <div class="countdown-box">
+            <span class="countdown-number" id="minutes">00</span>
+            <span class="countdown-label">Menit</span>
+        </div>
+        <div class="countdown-box">
+            <span class="countdown-number" id="seconds">00</span>
+            <span class="countdown-label">Detik</span>
+        </div>
+      </div>
+
+      <div class="guest">
+        Kepada Yth.<br>
+        <strong id="guestName" style="font-size: 1.2rem; display: block; margin: 5px 0; color: #333;">Tamu Undangan</strong>
+      </div>
+
+      <button onclick="openInvite()" style="margin-top: 20px;">Buka Undangan 💌</button>
+    </div>
+  </div>
+</section>
+
+<div id="inviteContent" class="invite-content">
+<!-- 👰🤵 MEMPELAI -->
+<section class="card reveal center" id="main-content">
+  <h2>Mempelai</h2>
+
+  <div style="margin-bottom: 20px;">
+      <p style="font-size: 1.5rem; font-weight: bold; margin-bottom: 5px; color: var(--gold); font-family: 'Playfair Display', serif;">SHINTA</p>
+      <p style="margin: 0; font-weight: 600;">SHINTA DILLA PURNAWIRASTRI</p>
+      <p style="font-size: 12px; margin-top: 5px; color: #666;">Putri dari Bpk. Agus Mardianto <br>& Ibu Eko Suheni</p>
+      <a href="https://www.instagram.com/shinta_dilla19" style="text-decoration: none; color: var(--gold); font-size: 12px;">@shinta_dilla19</a>
+  </div>
+
+  <p style="font-family: 'Playfair Display', serif; font-size: 30px; color: #ddd;">&</p>
+
+  <div style="margin-top: 20px;">
+      <p style="font-size: 1.5rem; font-weight: bold; margin-bottom: 5px; color: var(--gold); font-family: 'Playfair Display', serif;">DHIMAS</p>
+      <p style="margin: 0; font-weight: 600;">ADHIMAS NANDA ARYA SADEWA</p>
+      <p style="font-size: 12px; margin-top: 5px; color: #666;">Putra dari Bpk. Widodo <br>& Ibu Susila Puji Astutik</p>
+      <a href="https://www.instagram.com/adhimasnanda.as" style="text-decoration: none; color: var(--gold); font-size: 12px;">@adhimasnanda.as</a>
+  </div>
+</section>
+
+<!-- 📆 ACARA -->
+<section class="card reveal center">
+  <h2>Rangkaian Acara</h2>
+  
+  <div style="margin-bottom: 30px;">
+      <h3 style="margin: 5px 0; font-size: 20px;">Akad Nikah</h3>
+      <p style="font-weight: bold; color: #555;">Minggu, 01 November 2026</p>
+      <p style="font-size: 14px;">07:00 WIB - Selesai</p>
+      <p style="font-size: 13px; color: #777;">Rumah Mempelai Wanita</p>
+  </div>
+  
+  <hr style="border: 0; border-top: 1px dashed #ddd; width: 60%; margin: 20px auto;">
+
+  <div>
+      <h3 style="margin: 5px 0; font-size: 20px;">Resepsi</h3>
+      <p style="font-weight: bold; color: #555;">Minggu, 01 Nomber 2026</p>
+      <p style="font-size: 14px;">09:00 WIB - Selesai</p>
+      <p style="font-size: 13px; color: #777;">Jl. Sidomulyo Gg. IV, RT.31/RW.09, Sidomulyo, Wandanpuro, Kec. Bululawang, Kabupaten Malang, Jawa Timur</p>
+  </div>
+</section>
+
+<!-- 📍 MAP -->
+<section class="card reveal">
+  <h2 class="center">Lokasi Acara</h2>
+  <p class="center" style="font-size: 13px;">Patokan: Sebelah Utara Water Boom 88</p>
+
+  <a class="map-preview" target="_blank"
+     href="https://maps.app.goo.gl/UKd6BhBkZ4ZVg1RW8">
+    <!-- Menggunakan gambar resolusi tinggi untuk map agar tidak pecah -->
+    <img src="https://i.ibb.co.com/W40xHt77/Lokasi-Acara.png" alt="Peta Lokasi">
+    <div class="map-overlay">Klik untuk membuka Google Maps</div>
+  </a>
+</section>
+
+<!-- 💖 LOVE STORY -->
+<section class="card reveal center">
+  <h2>Love Story</h2>
+  <div style="border-left: 2px solid var(--gold); padding-left: 20px; text-align: left; margin-left: 20px;">
+      <div style="margin-bottom: 20px;">
+          <p style="margin: 0; font-size: 12px; font-weight: bold; color: var(--gold); text-transform: uppercase;">11 Mei 2025</p>
+          <h3 style="margin: 5px 0; font-size: 18px;">Engagement</h3>
+          <p style="font-size: 13px; line-height: 1.5; color: #555;">Momen dimana kami mengikat janji untuk melangkah ke jenjang yang lebih serius.</p>
+      </div>
+      <div>
+        <p style="margin: 0; font-size: 12px; font-weight: bold; color: var(--gold); text-transform: uppercase;">01 November 2026</p>
+          <h3 style="margin: 5px 0; font-size: 18px;">Wedding</h3>
+          <p style="font-size: 13px; line-height: 1.5; color: #555;">Hari yang dinanti, awal dari perjalanan hidup bersama dalam ikatan suci.</p>
+      </div>
+  </div>
+</section>
+
+<!-- � GALERI FOTO -->
+<section class="card reveal center">
+  <h2>Our Memories</h2>
+  <p style="font-size: 13px; margin-bottom: 20px;">Beberapa momen istimewa yang selalu kami kenang.</p>
+
+  <div class="photo-grid">
+    <div class="photo-item">
+      <img src="https://i.ibb.co.com/CK8fBZx9/IMG-5380-1.png" alt="Foto momen pertama">
+    </div>
+    <div class="photo-item">
+      <img src="https://i.ibb.co.com/0RsrPvjZ/IMG-9131-JPG.jpg" alt="Foto berdua">
+    </div>
+    <div class="photo-item">
+      <img src="https://i.ibb.co.com/HDKRrnLS/IMG-3729-JPG.jpg" alt="Foto kebersamaan">
+    </div>
+    <div class="photo-item">
+      <img src="https://i.ibb.co.com/hF3ndx6P/DSC03239-JPG.jpg" alt="Foto bahagia">
+    </div>
+  </div>
+</section>
+
+<!-- �💳 AMPLOP DIGITAL -->
+<section class="card reveal center">
+  <h2>Wedding Gift🎁</h2>
+  <p style="font-size: 13px; margin-bottom: 20px;">Doa restu Anda adalah kado terindah bagi kami.</p>
+
+  <div class="amplop">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <strong style="font-size: 1.2rem;">BNI</strong>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Bank_Negara_Indonesia_logo_%282004%29.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" style="height:15px; opacity:0.6;">
+    </div>
+    <div style="text-align: left; margin-top: 10px;">
+        <span style="font-size: 12px; color: #666;">a.n SHINTA DILA PURNAWIRASTRI</span>
+        <div style="font-family: monospace; font-size: 18px; font-weight:bold; letter-spacing: 1px; color:#333;">3616160001</div>
+    </div>
+    <button onclick="copyText('3616160001')" style="font-size: 12px; padding: 6px 14px; margin-top: 10px; width: 100%;">Salin No. Rek</button>
+  </div>
+
+  <div class="amplop">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <strong style="font-size: 1.2rem;">MANDIRI</strong>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Bank_Mandiri_logo_2016.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" style="height:20px; opacity:0.6;">
+    </div>
+    <div style="text-align: left; margin-top: 10px;">
+        <span style="font-size: 12px; color: #666;">a.n ADHIMAS NANDA ARYA SADEWA</span>
+        <div style="font-family: monospace; font-size: 18px; font-weight:bold; letter-spacing: 1px; color:#333;">1030010127682</div>
+    </div>
+    <button onclick="copyText('1030010127682')" style="font-size: 12px; padding: 6px 14px; margin-top: 10px; width: 100%;">Salin No. Rek</button>
+  </div>
+</section>
+
+<!-- 💬 BUKU TAMU (MANUAL) -->
+<section class="card reveal center">
+    <h2>Wishes for Us 💌</h2>
+    <p style="font-size: 13px; margin-bottom: 20px;">Tinggalkan ucapan dan doa terbaik Anda untuk kami.</p>
+    
+    <div class="wish-form">
+        <input type="text" id="wisherName" placeholder="Nama Anda" required>
+        <textarea id="wishText" placeholder="Tulis ucapan Anda di sini..."></textarea>
+        <button onclick="submitWish()" id="btnSubmit">Kirim Ucapan 💌</button>
+    </div>
+    
+    <div style="margin-top: 30px; text-align: left;">
+        <h3 style="text-align: center; margin-bottom: 15px;">Ucapan dari Tamu ✨</h3>
+        <div class="wishes-list" id="wishesList">
+            <p style="text-align: center; color: #999; font-size: 13px;">Sedang memuat ucapan...</p>
+        </div>
+    </div>
+</section>
+
+<!-- 📲 RSVP -->
+<section class="card reveal center">
+  <h2>Konfirmasi Kehadiran</h2>
+  <p style="font-size: 14px; margin-bottom: 20px;">Mohon konfirmasi kehadiran Anda melalui WhatsApp:</p>
+  
+  <a href="https://api.whatsapp.com/send/?phone=628121737562&text=Halo+Shinta+%26+Dhimas%2C+aku+hadir+yaa😊." target="_blank" style="text-decoration: none;">
+      <button style="background: #25D366; width: 100%; margin-bottom: 10px; border-radius: 8px;">Chat WA Mempelai (Shinta)</button>
+  </a>
+  <a href="https://api.whatsapp.com/send/?phone=6282133515908&text=Halo+Shinta+%26+Dhimas%2C+aku+hadir+yaa😊." target="_blank" style="text-decoration: none;">
+      <button style="background: #128C7E; width: 100%; border-radius: 8px;">Chat WA Mempelai (Dhimas)</button>
+  </a>
+</section>
+
+<footer>
+  <p style="font-family:'Playfair Display', serif; font-size: 18px; margin-bottom: 5px;">Shinta & Dhimas</p>
+  <span style="font-size: 11px;">01 November 2026</span><br><br>
+  <span style="font-size: 10px; opacity: 0.6">Created By <a href="https://www.instagram.com/adhimasnanda.as"> Dewa </a> ✨</span>
+</footer>
+</div>
+
+<script>
+// ==========================================
+// 🔑 KONFIGURASI GOOGLE SPREADSHEET
+// ==========================================
+// LANGKAH SETUP:
+// 1. Buat Google Spreadsheet baru
+// 2. Buat Google Apps Script (Tools > Script Editor)
+// 3. Paste kode ini di Apps Script:
+// ==========================================
+/* 
+function doPost(e) {
+  const sheet = SpreadsheetApp.getActiveSheet();
+  const data = JSON.parse(e.postData.contents);
+  
+  sheet.appendRow([
+    new Date(),
+    data.name,
+    data.message
+  ]);
+  
+  return ContentService.createTextOutput(JSON.stringify({status: "success"}))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function doGet(e) {
+  const sheet = SpreadsheetApp.getActiveSheet();
+  const data = sheet.getRange(2, 1, sheet.getLastRow(), 3).getValues();
+  
+  const wishes = data.map(row => ({
+    date: row[0],
+    name: row[1],
+    message: row[2]
+  }));
+  
+  return ContentService.createTextOutput(JSON.stringify(wishes))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+*/
+// ==========================================
+// 🔑 KONFIGURASI GOOGLE SPREADSHEET (untuk Buku Tamu)
+// ==========================================
+const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz_B1VxjtFCHk4yIXXnd6cMHFdukMNGULkm9d2FqfaltlROaZrAXGDq33NzcWe7btu5/exec";
+// ==========================================
+
+// --- COUNTDOWN LOGIC ---
+function updateCountdown() {
+    // Tanggal pernikahan: 4 April 2026
+    const weddingDate = new Date("November 1, 2026 07:00:00").getTime();
+    const now = new Date().getTime();
+    const gap = weddingDate - now;
+
+    const second = 1000;
+    const minute = second * 60;
+    const hour = minute * 60;
+    const day = hour * 24;
+
+    const d = Math.floor(gap / day);
+    const h = Math.floor((gap % day) / hour);
+    const m = Math.floor((gap % hour) / minute);
+    const s = Math.floor((gap % minute) / second);
+
+    document.getElementById("days").innerText = d;
+    document.getElementById("hours").innerText = h;
+    document.getElementById("minutes").innerText = m;
+    document.getElementById("seconds").innerText = s;
+}
+setInterval(updateCountdown, 1000);
+updateCountdown(); // Jalankan langsung
+
+
+// --- WISH SUBMISSION LOGIC ---
+async function submitWish() {
+    const name = document.getElementById('wisherName').value.trim();
+    const message = document.getElementById('wishText').value.trim();
+    const btn = document.getElementById('btnSubmit');
+
+    if (!name || !message) {
+        alert("Mohon isi nama dan ucapan Anda terlebih dahulu");
+        return;
+    }
+
+    btn.innerText = "Sedang Mengirim... ⏳";
+    btn.disabled = true;
+
+    try {
+        const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+            method: 'POST',
+            body: JSON.stringify({
+                name: name,
+                message: message
+            })
+        });
+
+        if (response.ok) {
+            alert("Terima kasih! Ucapan Anda telah dikirim 💌");
+            document.getElementById('wisherName').value = '';
+            document.getElementById('wishText').value = '';
+            await loadWishes(); // Refresh ucapan
+        } else {
+            alert("Gagal mengirim ucapan. Silakan coba lagi.");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Terjadi kesalahan. Pastikan URL Apps Script sudah benar.");
+    } finally {
+        btn.innerText = "Kirim Ucapan 💌";
+        btn.disabled = false;
+    }
+}
+
+async function loadWishes() {
+    const wishesList = document.getElementById('wishesList');
+
+    try {
+        const response = await fetch(GOOGLE_APPS_SCRIPT_URL);
+        const wishes = await response.json();
+
+        if (wishes.length === 0) {
+            wishesList.innerHTML = '<p style="text-align: center; color: #999; font-size: 13px;">Belum ada ucapan. Jadilah yang pertama! 💌</p>';
+            return;
+        }
+
+        wishesList.innerHTML = wishes.map(wish => `
+            <div class="wish-item">
+                <div class="wish-item-name">💌 ${wish.name}</div>
+                <div class="wish-item-text">"${wish.message}"</div>
+                <div class="wish-item-date">${new Date(wish.date).toLocaleDateString('id-ID')}</div>
+            </div>
+        `).join('');
+    } catch (error) {
+        console.error("Error loading wishes:", error);
+        wishesList.innerHTML = '<p style="text-align: center; color: #999; font-size: 13px;">Gagal memuat ucapan. Periksa kembali URL Apps Script.</p>';
+    }
+}
+
+function copyWish() {
+    const text = document.getElementById('wishText').innerText;
+    navigator.clipboard.writeText(text);
+    alert("Ucapan berhasil disalin!");
+}
+
+
+// --- EXISTING SCRIPTS ---
+function openInvite(){
+  var audio = document.getElementById('music');
+  audio.play().catch(function(error) {
+      console.log("Audio play blocked by browser policy: " + error);
+  });
+
+  document.body.classList.add('invite-open');
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    el.classList.add('active');
+  });
+
+  // Load wishes ketika undangan dibuka
+  setTimeout(() => {
+    loadWishes();
+  }, 500);
+
+  document.getElementById('main-content').scrollIntoView({ 
+    behavior: 'smooth' 
+  });
+}
+
+function copyText(txt){
+  navigator.clipboard.writeText(txt).then(function() {
+      alert("Nomor rekening berhasil disalin!");
+  }, function(err) {
+      alert("Silakan salin manual: " + txt);
+  });
+}
+
+const params = new URLSearchParams(window.location.search);
+const guest = params.get("namatamu");
+if(guest){
+  document.getElementById("guestName").innerText =
+    decodeURIComponent(guest.replace(/\+/g," "));
+}
+
+const reveal = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('active');
+    }
+  });
+},{threshold:0.1});
+reveal.forEach(r=>obs.observe(r));
+</script>
+
+</body>
+</html>
